@@ -10,11 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -46,6 +44,11 @@ public class Book {
 	@Size(min=1, max=255, message="Thoughts must be one to two hundred fifty-five characters in length")
 	private String myThoughts;
 	
+	// 	**** MANY:TO:ONE RELATIONSHIP ************************
+	@ManyToOne( fetch = FetchType.LAZY )
+	@JoinColumn( name="user_id" )
+	private User user;
+	
 	@Column(updatable=false)		// this will not allow createdAt to be updated after creation
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -67,6 +70,62 @@ public class Book {
 
 	public Book() {}
 
-	//	//// GETTERS AND SETTERS /////////////////////////////
+	//	//// GETTERS AND SETTERS /////////////////////////////	
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getMyThoughts() {
+		return myThoughts;
+	}
+
+	public void setMyThoughts(String myThoughts) {
+		this.myThoughts = myThoughts;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 	
 }

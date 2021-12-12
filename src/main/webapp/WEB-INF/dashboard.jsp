@@ -52,8 +52,9 @@
 					<div class="d-flex justify-content-between align-items-center">
 						<h2>Books from everyone's shelves:</h2>
 						<div class="d-flex justify-content-end align-items-center">
-							<button class="col btn btn-warning btn-sm round"						
-								onclick="window.location.href='/books/new';">Add a Book to my Shelf</button>
+							<button class="col btn btn-warning btn-sm round"
+								onclick="window.location.href='/books/new';">Add a Book
+								to my Shelf</button>
 						</div>
 					</div>
 					<!-- //// TABLE TO DISPLAY ALL BOOKS //////// -->
@@ -71,27 +72,34 @@
 							<c:forEach var="eachBook" items="${ bookList }">
 								<tr>
 									<td>${ eachBook.id }</td>
-									<td><a class="text-dark text-decoration-none" href="/books/${ eachBook.id }">${ eachBook.title }</a></td>
+									<td><a class="text-dark text-decoration-none"
+										href="/books/${ eachBook.id }">${ eachBook.title }</a></td>
 									<td>${ eachBook.author }</td>
 									<td>${ eachBook.user.userName }</td>
 									<td class="row">
 										<!-- **** Button that points to Book View ************ -->
 										<div class="col">
-											<button class="btn btn-primary btn-sm round" 
+											<button class="btn btn-primary btn-sm round"
 												onclick="window.location.href='/books/${ eachBook.id }';">View</button>
-										</div>
-										<!-- **** Button that points to Book Edit ************ -->
-										<div class="col">
-											<button class="btn btn-warning btn-sm round" 
-												onclick="window.location.href='/books/${ eachBook.id }/edit';">Edit</button>
-										</div>
-										<!-- **** Button that deletes Book ************ -->
-										<form class="col"
-											action="/books/${ eachBook.id }/delete" method="post">
-											<input type="hidden" name="_method" value="delete">
-											<!-- ### Converts method of form to DELETE ### -->
-											<button class="btn btn-danger btn-sm round">Delete</button>
-										</form>
+										</div> <c:choose>
+											<c:when test="${user_id == eachBook.user.id}">
+												<div class="col">
+													<button class="btn btn-warning btn-sm round"
+														onclick="window.location.href='/books/${ eachBook.id }/edit';">Edit</button>
+												</div>
+												<!-- **** Button that deletes Book ************ -->
+												<form class="col" action="/books/${ eachBook.id }/delete"
+													method="post">
+													<input type="hidden" name="_method" value="delete">
+													<!-- ### Converts method of form to DELETE ### -->
+													<button class="btn btn-danger btn-sm round">Delete</button>
+												</form>
+											</c:when>
+											<c:otherwise>
+
+											</c:otherwise>
+										</c:choose> 
+
 									</td>
 								</tr>
 							</c:forEach>

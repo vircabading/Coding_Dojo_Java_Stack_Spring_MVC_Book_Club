@@ -96,14 +96,6 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getMyThoughts() {
-		return myThoughts;
-	}
-
-	public void setMyThoughts(String myThoughts) {
-		this.myThoughts = myThoughts;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -126,6 +118,14 @@ public class Book {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getMyThoughts() {
+		return myThoughts;
+	}
+
+	public void setMyThoughts(String myThoughts) {
+		this.myThoughts = myThoughts;
 	}
 	
 }

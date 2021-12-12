@@ -74,14 +74,14 @@
 									<td>${ eachBook.title }</td>
 									<td>${ eachBook.author }</td>
 									<td>${ eachBook.user.userName }</td>
-									<td class="row align-items-center">
+									<td class="row">
 										<!-- **** Button that points to Expense Edit ************ -->
-										<form class="col m-2" action="/expenses/${ expense.id }/edit"
+										<form class="col" action="/books/${ eachBook.id }/edit"
 											method="get">
 											<button class="btn btn-warning btn-sm round">Edit</button>
 										</form> <!-- **** Button that deletes Expense ************ -->
-										<form class="col m-2"
-											action="/expenses/${ expense.id }/delete" method="post">
+										<form class="col"
+											action="/books/${ eachBook.id }/delete" method="post">
 											<input type="hidden" name="_method" value="delete">
 											<!-- ### Converts method of form to DELETE ### -->
 											<button class="btn btn-danger btn-sm round">Delete</button>

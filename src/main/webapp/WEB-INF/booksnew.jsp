@@ -68,11 +68,11 @@
 							<form:input class="form-control mb-3" path="author" />
 						</p>
 						<p class="form-group">
-							<form:label path="myThoughts">My Thoughts</form:label>
+							<form:label path="myThoughts">My Thoughts:</form:label>
 							<strong> <form:errors path="myThoughts"
 									class="alert text-danger" />
 							</strong>
-							<form:textarea class="form-control mb-3" path="myThoughts:" />
+							<form:textarea class="form-control mb-3" path="myThoughts" />
 						</p>
 						<input class="btn btn-primary mb-3" type="submit" value="Submit" />
 					</form:form>

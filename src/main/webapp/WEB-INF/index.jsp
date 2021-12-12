@@ -22,7 +22,7 @@
 <!-- //// CSS LINKS //////////////////////////////////////// -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<title>Login and Registration</title>
+<title>Book Club</title>
 </head>
 <body>
 	<!-- //// HEADER /////////////////////////////////////////// -->
@@ -30,7 +30,7 @@
 		<div class="navbar navbar-dark bg-dark box-shadow">
 			<div class="container d-flex justify-content-between">
 				<a href="/" class="navbar-brand d-flex align-items-center"> <strong
-					class="text-warning">LOGIN AND REGISTRATION</strong>
+					class="text-warning">BOOK CLUB</strong>
 				</a>
 				<button class="btn btn-info btn-sm round" onclick="window.location.href='/';">Index</button>
 			</div>

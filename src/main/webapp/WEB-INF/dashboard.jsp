@@ -22,7 +22,7 @@
 <!-- //// CSS LINKS //////////////////////////////////////// -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<title>Login and Registration</title>
+<title>Book Club</title>
 </head>
 <body>
 	<!-- //// HEADER /////////////////////////////////////////// -->
@@ -30,7 +30,7 @@
 		<div class="navbar navbar-dark bg-dark box-shadow">
 			<div class="container d-flex justify-content-between">
 				<a href="/" class="col-8 navbar-brand"> <strong
-					class="text-warning">LOGIN AND REGISTRATION</strong>
+					class="text-warning">BOOK CLUB</strong>
 				</a>
 				<div class="col-4 row align-items-center">
 					<p class="col text-white m-2">${ loggedInUser.userName }</p>
@@ -45,7 +45,14 @@
 	<main role="main">
 		<div class="container mt-4">
 			<div class="row">
-				<h1>Welcome to Dashboard ${ loggedInUser.userName }</h1>
+				<h1>Welcome, ${ loggedInUser.userName }</h1>
+				<div class="bg-info round p-3">
+					<div>
+						<h2>Books from everyone's shelves:</h2>
+					</div>
+					<!-- //// TABLE TO DISPLAY ALL BOOKS //////// -->
+				
+				</div>
 			</div>
 		</div>
 	</main>

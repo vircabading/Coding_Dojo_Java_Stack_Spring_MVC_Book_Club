@@ -35,11 +35,12 @@ public class BookService {
 		return this.bookRepo.findAll();
 	}
 
-//	---- Retrieve Dojo by ID --------------------
+//	---- Retrieve Book by ID --------------------
 	public Book retrieveBook(Long id) {
 		Optional<Book> optBook = this.bookRepo.findById(id);
 		if (optBook.isPresent()) {
-			return optBook.get();
+			Book book = optBook.get();
+			return book;
 		} else {
 			return null;
 		}

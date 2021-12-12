@@ -46,7 +46,7 @@ public class User {
     private String email;
     
 //    @Pattern(regexp="^(?:[A-Z].*[0-9])|(?:[0-9].*[A-Z])$",
-//		message = "Password must have at least One Capital Letter and One Nummerical character")
+//    		message = "Password must have at least One Capital Letter and One Nummerical character")
     @NotEmpty(message="Password is required!")
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
     private String password;
@@ -137,6 +137,14 @@ public class User {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public List<Book> getBookList() {
+		return bookList;
+	}
+
+	public void setBookList(List<Book> bookList) {
+		this.bookList = bookList;
 	}
     
 }

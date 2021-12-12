@@ -52,8 +52,7 @@
 					<!-- //// FORM TO ENTER A NEW BOOK ///////// -->
 					<form:form class="bg-info round p-3" action="/books/new" method="post"
 						modelAttribute="newBook">
-						<!-- **** User Id **** -->
-						<input type="hidden" path="user_id" value="${user_id}" />
+
 						<!-- **** Title **** -->
 						<p class="form-group">
 							<form:label path="title">Book Title:</form:label>

@@ -124,8 +124,11 @@ public class BookController {
     	//	---- Get the Log In User --------------------------------
     	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
     	model.addAttribute("loggedInUser", loggedInUser);
+    	System.out.println("**** IN PUT: books/id/edit ****");
+    	oldBook.setUser(loggedInUser);
+    	System.out.println("Oldbook user:" + oldBook.getUser().getUserName() + " | id: " + oldBook.getUser().getId());
     	if (result.hasErrors()) {
-            return "books/" + oldBook.getId() + "/edit.jsp";
+            return "booksidedit.jsp";
         } else {
         	this.bookServ.update(oldBook);
             return "redirect:/books/" + oldBook.getId();

@@ -1,5 +1,7 @@
 package com.vcabading.bookclub.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import com.vcabading.bookclub.models.Book;
 import com.vcabading.bookclub.models.LoginUser;
 import com.vcabading.bookclub.models.User;
+import com.vcabading.bookclub.services.BookService;
 import com.vcabading.bookclub.services.UserService;
 
 ////////////////////////////////////////////////////////////////////
@@ -27,6 +31,9 @@ public class HomeController {
     
     @Autowired
     private UserService userServ;
+    
+    @Autowired
+    private BookService bookServ;
     
     //	//// SHOW //////////////////////////////////////////////////
    
@@ -43,13 +50,18 @@ public class HomeController {
     }
     
     //	**** Display DASHBOARD *************************************
-    @GetMapping("/dashboard")
+    @GetMapping("/book")
     public String dashboard(Model model, HttpSession session) {
+    	//	---- Check if User is Logged In  -----------------------
     	if (session.isNew() || session.getAttribute("user_id") == null) {
     		return "redirect:/";
     	}
+    	//	---- Get the Log In User -------------------------------
     	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
     	model.addAttribute("loggedInUser", loggedInUser);
+    	//	---- Get All Books -------------------------------------
+    	List<Book> bookList = this.bookServ.retrieveAll();
+    	model.addAttribute("bookList", bookList);
     	return "dashboard.jsp";
     }
     

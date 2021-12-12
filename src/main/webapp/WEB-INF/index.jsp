@@ -40,12 +40,16 @@
 	<!-- //// MAIN AREA //////////////////////////////////////// -->
 	<main role="main">
 		<div class="container mt-4">
+			<h1 class="text-primary">
+				<strong>Book Club</strong>
+			</h1>
+			<p>A place for friends to share thoughts on books</p>
 			<div class="row">
 				<!-- //// REGISTRATION FORM //////////////////////// -->
 				<form:form class="col bg-info m-2 p-2 round" action="/"
 					method="post" modelAttribute="newUser">
 					<input type="hidden" name="_method" value="put">	<!-- ### Converts method of form to PUT ### -->
-					<h2><strong>Register and Account:</strong></h2>
+					<h2><strong>Register:</strong></h2>
 					<div class="form-group">
 						<label>User Name:</label> <strong> <form:errors
 								path="userName" class="text-danger alert mb-3" />

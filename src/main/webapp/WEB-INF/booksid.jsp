@@ -48,10 +48,16 @@
 	<main role="main">
 		<div class="container mt-4">
 			<h1>${ book.title }</h1>
-			<h2>${ book.user.userName } read ${ book.title } by ${ book.author }</h2>
-			<h2>Here are ${ book.user.userName }'s thoughts:</h2>
-			<div class="card p-3 round">
-				<p>${ book.myThoughts }</p>
+			<div class="bg-info round p-3">
+				<h3>
+					<strong class="text-danger">${ book.user.userName }</strong> read 
+					<strong class="text-primary">${ book.title }</strong> by 
+					<strong class="text-success">${ book.author }</strong>
+				</h3>
+				<h3>Here are ${ book.user.userName }'s thoughts:</h3>
+				<div class="card p-3 round">
+					<p>${ book.myThoughts }</p>
+				</div>
 			</div>
 		</div>
 	</main>

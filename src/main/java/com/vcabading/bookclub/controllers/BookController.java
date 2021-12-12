@@ -46,9 +46,9 @@ public class BookController {
     	//	---- Get the Log In User -------------------------------
     	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
     	model.addAttribute("loggedInUser", loggedInUser);
-    	
-    	
-    	
+    	//	---- Get Book specified by ID --------------------------
+    	Book book = this.bookServ.retrieveBook(id);
+    	model.addAttribute("book", book);
     	return "booksid.jsp";
     }
     

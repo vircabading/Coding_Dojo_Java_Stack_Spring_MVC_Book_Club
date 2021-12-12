@@ -49,7 +49,33 @@
 			<div class="row">
 				<div class="col-10">
 					<h1>Add a Book to your shelf, ${ loggedInUser.userName }!</h1>
-				
+					<!-- //// FORM TO ENTER A NEW BOOK ///////// -->
+					<form:form class="bg-info round p-3" action="/books/new" method="post"
+						modelAttribute="newBook">
+						<!-- **** Title **** -->
+						<p class="form-group">
+							<form:label path="title">Book Title:</form:label>
+							<strong> <form:errors path="title"
+									class="alert text-danger" />
+							</strong>
+							<form:input class="form-control mb-3" path="title" />
+						</p>
+						<p class="form-group">
+							<form:label path="author">Book Author:</form:label>
+							<strong> <form:errors path="author"
+									class="alert text-danger" />
+							</strong>
+							<form:input class="form-control mb-3" path="author" />
+						</p>
+						<p class="form-group">
+							<form:label path="myThoughts">My Thoughts</form:label>
+							<strong> <form:errors path="myThoughts"
+									class="alert text-danger" />
+							</strong>
+							<form:textarea class="form-control mb-3" path="myThoughts:" />
+						</p>
+						<input class="btn btn-primary mb-3" type="submit" value="Submit" />
+					</form:form>
 				</div>
 			</div>
 		</div>

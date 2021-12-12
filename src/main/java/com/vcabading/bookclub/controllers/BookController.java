@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.vcabading.bookclub.models.Book;
 import com.vcabading.bookclub.models.User;
 import com.vcabading.bookclub.services.BookService;
 import com.vcabading.bookclub.services.UserService;

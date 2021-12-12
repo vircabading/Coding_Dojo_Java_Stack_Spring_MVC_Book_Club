@@ -41,7 +41,7 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
     	if (session.getAttribute("user_id") != null) {		// If user is in session
-    		return "redirect:/dashboard";					//		re-route to dashboard
+    		return "redirect:/books";					//		re-route to dashboard
     	}
     	
         model.addAttribute("newUser", new User());
@@ -50,7 +50,7 @@ public class HomeController {
     }
     
     //	**** Display DASHBOARD *************************************
-    @GetMapping("/book")
+    @GetMapping("/books")
     public String dashboard(Model model, HttpSession session) {
     	//	---- Check if User is Logged In  -----------------------
     	if (session.isNew() || session.getAttribute("user_id") == null) {
@@ -78,7 +78,7 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", newUser.getId());
-        return "redirect:/dashboard";
+        return "redirect:/books";
     }
     
     //	**** POST: Login the User ***********************************
@@ -92,7 +92,7 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", user.getId());
-        return "redirect:/dashboard";
+        return "redirect:/books";
     }
     
     //	//// DELETE //////////////////////////////////////////////////

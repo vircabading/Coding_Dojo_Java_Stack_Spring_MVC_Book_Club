@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.vcabading.bookclub.models.Book;
@@ -31,7 +32,28 @@ public class BookController {
     @Autowired
     private BookService bookServ;
     
+    //	//// BOOKS ID //////////////////////////////////////////////
+    //	Show information from a Book
+    
+    //	**** GET: Render book information **************************
+    @GetMapping("books/{id}")
+    public String booksId(@PathVariable("id") Long id,
+    						Model model, HttpSession session) {
+    	//	---- Check if User is Logged In  -----------------------
+    	if (session.isNew() || session.getAttribute("user_id") == null) {
+    		return "redirect:/";
+    	}
+    	//	---- Get the Log In User -------------------------------
+    	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
+    	model.addAttribute("loggedInUser", loggedInUser);
+    	
+    	
+    	
+    	return "booksid.jsp";
+    }
+    
     //	//// BOOKS NEW /////////////////////////////////////////////
+    //	Add a Book to books table
     
     //	**** GET: Render Form **************************************
     @GetMapping("/books/new")

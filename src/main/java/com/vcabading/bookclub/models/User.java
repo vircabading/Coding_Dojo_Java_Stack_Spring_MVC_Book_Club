@@ -49,7 +49,10 @@ public class User {
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
-    
+
+    // **** ONE : TO : MANY RELATIONSHIP **********************
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<Book> bookList;
 
 	@Column(updatable=false)		// this will not allow createdAt to be updated after creation
 	@DateTimeFormat(pattern="yyyy-MM-dd")

@@ -31,8 +31,8 @@ public class BookController {
     
     @Autowired
     private BookService bookServ;
-    
-    //	//// BOOKS ID //////////////////////////////////////////////
+
+    //	//// BOOKS SHOW ////////////////////////////////////////////
     //	Show information from a Book
     
     //	**** GET: Render book information **************************
@@ -58,7 +58,7 @@ public class BookController {
     //	**** GET: Render Form **************************************
     @GetMapping("/books/new")
     public String booksNew(Model model, HttpSession session) {
-//    	---- Check if User is Logged In  -----------------------
+    	//    	---- Check if User is Logged In  -------------------
     	if (session.isNew() || session.getAttribute("user_id") == null) {
     		return "redirect:/";
     	}
@@ -90,5 +90,25 @@ public class BookController {
             return "redirect:/books";
         }
     }
+    
+    //	//// BOOKS EDIT ////////////////////////////////////////////
+    //	Edit information from a Book
+    
+    //	**** GET: Render Edit Form *********************************
+    @GetMapping("/books/{id}/edit")
+    public String booksIdEdit(@PathVariable("id") Long id,
+    							Model model, HttpSession session) {
+    	//  ---- Check if User is Logged In  -----------------------
+    	if (session.isNew() || session.getAttribute("user_id") == null) {
+    		return "redirect:/";
+    	}
+    	//	---- Get the Log In User -------------------------------
+    	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
+    	model.addAttribute("loggedInUser", loggedInUser);
+    	//	---- Get Book specified by ID --------------------------
+    	Book oldBook = this.bookServ.retrieveBook(id);
+    	model.addAttribute("oldBook", oldBook);
+    	return "booksidedit.jsp";
+    }    
 	
 }

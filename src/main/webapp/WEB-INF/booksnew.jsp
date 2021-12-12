@@ -10,7 +10,7 @@
 <%@ page isErrorPage="true"%>
 
 <!--/////////////////////////////////////////////////////
-//	DASHBOARD JSP
+//	BOOKS NEW JSP
 ///////////////////////////////////////////////////////// -->
 
 <!DOCTYPE html>
@@ -47,50 +47,9 @@
 	<main role="main">
 		<div class="container mt-4">
 			<div class="row">
-				<h1>Welcome, ${ loggedInUser.userName }</h1>
-				<div class="bg-info round p-3">
-					<div class="d-flex justify-content-between align-items-center">
-						<h2>Books from everyone's shelves:</h2>
-						<div class="d-flex justify-content-end align-items-center">
-							<button class="col btn btn-warning btn-sm round"						
-								onclick="window.location.href='/books/new';">Add a Book to my Shelf</button>
-						</div>
-					</div>
-					<!-- //// TABLE TO DISPLAY ALL BOOKS //////// -->
-					<table class="table table-dark">
-						<thead>
-							<tr>
-								<th scope="col"><strong>ID</strong></th>
-								<th scope="col"><strong>Title</strong></th>
-								<th scope="col"><strong>Author</strong></th>
-								<th scope="col"><strong>Posted By</strong></th>
-								<th scope="col"><strong>Action</strong></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="eachBook" items="${ bookList }">
-								<tr>
-									<td>${ eachBook.id }</td>
-									<td>${ eachBook.title }</td>
-									<td>${ eachBook.author }</td>
-									<td>${ eachBook.user.userName }</td>
-									<td class="row align-items-center">
-										<!-- **** Button that points to Expense Edit ************ -->
-										<form class="col m-2" action="/expenses/${ expense.id }/edit"
-											method="get">
-											<button class="btn btn-warning btn-sm round">Edit</button>
-										</form> <!-- **** Button that deletes Expense ************ -->
-										<form class="col m-2"
-											action="/expenses/${ expense.id }/delete" method="post">
-											<input type="hidden" name="_method" value="delete">
-											<!-- ### Converts method of form to DELETE ### -->
-											<button class="btn btn-danger btn-sm round">Delete</button>
-										</form>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+				<div class="col-10">
+					<h1>Add a Book to your shelf, ${ loggedInUser.userName }!</h1>
+				
 				</div>
 			</div>
 		</div>

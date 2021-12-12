@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.vcabading.bookclub.models.Book;
 import com.vcabading.bookclub.models.User;
@@ -109,6 +110,26 @@ public class BookController {
     	Book oldBook = this.bookServ.retrieveBook(id);
     	model.addAttribute("oldBook", oldBook);
     	return "booksidedit.jsp";
-    }    
+    }
+    
+    //	**** PUT: Update Old Book on database *************************
+    @PutMapping("books/{id}/edit")
+    public String booksIdEditPutt(@Valid @ModelAttribute("oldBook") Book oldBook,
+    		BindingResult result, @PathVariable("id") Long id,
+    		Model model, HttpSession session) {
+    	// 	---- Check if User is Logged In  ------------------------
+    	if (session.isNew() || session.getAttribute("user_id") == null) {
+    		return "redirect:/";
+    	}
+    	//	---- Get the Log In User --------------------------------
+    	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
+    	model.addAttribute("loggedInUser", loggedInUser);
+    	if (result.hasErrors()) {
+            return "books/" + oldBook.getId() + "/edit.jsp";
+        } else {
+        	this.bookServ.update(oldBook);
+            return "redirect:/books/" + oldBook.getId();
+        }
+    }
 	
 }

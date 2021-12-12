@@ -54,7 +54,7 @@
 					<strong class="text-primary">${ book.title }</strong> by 
 					<strong class="text-success">${ book.author }</strong>
 				</h3>
-				<h3>Here are ${ book.user.userName }'s thoughts:</h3>
+				<p>Here are ${ book.user.userName }'s thoughts:</p>
 				<div class="card p-3 round">
 					<p>${ book.myThoughts }</p>
 				</div>

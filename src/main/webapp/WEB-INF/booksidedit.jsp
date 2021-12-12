@@ -10,7 +10,7 @@
 <%@ page isErrorPage="true"%>
 
 <!--/////////////////////////////////////////////////////
-//	BOOKS NEW JSP
+//	BOOKS ID EDIT JSP
 ///////////////////////////////////////////////////////// -->
 
 <!DOCTYPE html>
@@ -48,12 +48,12 @@
 		<div class="container mt-4">
 			<div class="row">
 				<div class="col-10">
-					<h1>Add a Book to your shelf, ${ loggedInUser.userName }!</h1>
+					<h1>Change your entry, ${ loggedInUser.userName }!</h1>
 					<!-- //// FORM TO ENTER A NEW BOOK ///////// -->
-					<form:form class="bg-info round p-3" action="/books/new" method="post"
-						modelAttribute="newBook">
-						<!-- **** User Id **** -->
-						<input type="hidden" path="user_id" value="${user_id}" />
+					<form:form class="bg-info round p-3" action="/books/${ oldBook.id }/edit" method="post"
+						modelAttribute="oldBook">
+						<!-- ### Convert method of form to PUT ### -->
+						<input type="hidden" name="_method" value="put" />
 						<!-- **** Title **** -->
 						<p class="form-group">
 							<form:label path="title">Book Title:</form:label>
@@ -62,6 +62,7 @@
 							</strong>
 							<form:input class="form-control mb-3" path="title" />
 						</p>
+						<!-- **** Author **** -->
 						<p class="form-group">
 							<form:label path="author">Book Author:</form:label>
 							<strong> <form:errors path="author"
@@ -69,6 +70,7 @@
 							</strong>
 							<form:input class="form-control mb-3" path="author" />
 						</p>
+						<!-- **** myThoughts **** -->
 						<p class="form-group">
 							<form:label path="myThoughts">My Thoughts:</form:label>
 							<strong> <form:errors path="myThoughts"
@@ -76,7 +78,7 @@
 							</strong>
 							<form:textarea class="form-control mb-3" path="myThoughts" />
 						</p>
-						<input class="btn btn-primary mb-3" type="submit" value="Submit" />
+						<input class="btn btn-warning mb-3" type="submit" value="Submit Edit" />
 					</form:form>
 				</div>
 			</div>

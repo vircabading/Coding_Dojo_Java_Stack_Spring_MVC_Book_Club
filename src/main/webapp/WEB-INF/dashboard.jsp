@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<!-- //// TABLE TO DISPLAY ALL BOOKS //////// -->
-					<table class="table table-dark">
+					<table class="table">
 						<thead>
 							<tr>
 								<th scope="col"><strong>ID</strong></th>
@@ -71,15 +71,21 @@
 							<c:forEach var="eachBook" items="${ bookList }">
 								<tr>
 									<td>${ eachBook.id }</td>
-									<td>${ eachBook.title }</td>
+									<td><a class="text-dark text-decoration-none" href="/books/${ eachBook.id }">${ eachBook.title }</a></td>
 									<td>${ eachBook.author }</td>
 									<td>${ eachBook.user.userName }</td>
 									<td class="row">
-										<!-- **** Button that points to Expense Edit ************ -->
-										<form class="col" action="/books/${ eachBook.id }/edit"
-											method="get">
-											<button class="btn btn-warning btn-sm round">Edit</button>
-										</form> <!-- **** Button that deletes Expense ************ -->
+										<!-- **** Button that points to Book View ************ -->
+										<div class="col">
+											<button class="btn btn-primary btn-sm round" 
+												onclick="window.location.href='/books/${ eachBook.id }';">View</button>
+										</div>
+										<!-- **** Button that points to Book Edit ************ -->
+										<div class="col">
+											<button class="btn btn-warning btn-sm round" 
+												onclick="window.location.href='/books/${ eachBook.id }/edit';">Edit</button>
+										</div>
+										<!-- **** Button that deletes Book ************ -->
 										<form class="col"
 											action="/books/${ eachBook.id }/delete" method="post">
 											<input type="hidden" name="_method" value="delete">

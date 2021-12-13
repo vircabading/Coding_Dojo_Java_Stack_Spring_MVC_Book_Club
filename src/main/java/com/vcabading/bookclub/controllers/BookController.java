@@ -37,7 +37,7 @@ public class BookController {
     //	Show information from a Book
     
     //	**** GET: Render book information **************************
-    @GetMapping("books/{id}")
+    @GetMapping("/books/{id}")
     public String booksId(@PathVariable("id") Long id,
     						Model model, HttpSession session) {
     	//	---- Check if User is Logged In  -----------------------
@@ -73,7 +73,7 @@ public class BookController {
     }
     
     //	**** POST: Add New Book to database *************************
-    @PostMapping("books/new")
+    @PostMapping("/books/new")
     public String booksNewPost(@Valid @ModelAttribute("newBook") Book newBook,
     		BindingResult result, Model model, HttpSession session) {
     	// 	---- Check if User is Logged In  ------------------------
@@ -113,7 +113,7 @@ public class BookController {
     }
     
     //	**** PUT: Update Old Book on database *************************
-    @PutMapping("books/{id}/edit")
+    @PutMapping("/books/{id}/edit")
     public String booksIdEditPutt(@Valid @ModelAttribute("oldBook") Book oldBook,
     		BindingResult result, @PathVariable("id") Long id,
     		Model model, HttpSession session) {
@@ -133,4 +133,10 @@ public class BookController {
         }
     }
 	
+    //	//// BOOKS DELETE //////////////////////////////////////////
+    @GetMapping("/books/{id}/delete")
+    public String booksIdDelete(@PathVariable("id") Long id, Model model) {
+    	this.bookServ.delete(id);
+    	return "redirect:/dashboard";
+    }
 }

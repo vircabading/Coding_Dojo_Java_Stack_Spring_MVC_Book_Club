@@ -49,8 +49,6 @@
 			<div class="row">
 				<div class="col-10">
 					<h1>Change your entry, ${ loggedInUser.userName }!</h1>
-					<p>Book User Name: ${ oldBook.user.userName } }</p>
-					<p>Book User ID: ${ oldBook.user.id } }</p>
 					<!-- //// FORM TO ENTER A NEW BOOK ///////// -->
 					<form:form class="bg-info round p-3" action="/books/${ oldBook.id }/edit" method="post"
 						modelAttribute="oldBook">

@@ -50,7 +50,8 @@
 				<div class="col-10">
 					<h1>Change your entry, ${ loggedInUser.userName }!</h1>
 					<!-- //// FORM TO ENTER A NEW BOOK ///////// -->
-					<form:form class="bg-info round p-3" action="/books/${ oldBook.id }/edit" method="post"
+					<form:form class="bg-info round p-3"
+						action="/books/${ oldBook.id }/edit" method="post"
 						modelAttribute="oldBook">
 						<!-- ### Convert method of form to PUT ### -->
 						<input type="hidden" name="_method" value="put" />
@@ -78,7 +79,8 @@
 							</strong>
 							<form:textarea class="form-control mb-3" path="myThoughts" />
 						</p>
-						<input class="btn btn-warning mb-3" type="submit" value="Submit Edit" />
+						<input class="btn btn-warning mb-3" type="submit"
+							value="Submit Edit" />
 					</form:form>
 				</div>
 			</div>

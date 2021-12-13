@@ -95,11 +95,7 @@
 													<button class="btn btn-danger btn-sm round">Delete</button>
 												</form>
 											</c:when>
-											<c:otherwise>
-
-											</c:otherwise>
 										</c:choose> 
-
 									</td>
 								</tr>
 							</c:forEach>

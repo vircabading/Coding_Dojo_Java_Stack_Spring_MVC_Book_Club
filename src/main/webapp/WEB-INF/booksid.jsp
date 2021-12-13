@@ -58,6 +58,23 @@
 				<div class="card p-3 round">
 					<p>${ book.myThoughts }</p>
 				</div>
+				<c:choose>
+						<c:when test="${user_id == book.user.id}">
+							<div class="row mt-3">
+								<div class="col-2">
+									<button class="btn btn-warning btn-sm round"
+										onclick="window.location.href='/books/${ book.id }/edit';">Edit</button>
+								</div>
+								<!-- **** Button that deletes Book ************ -->
+								<form class="col-2" action="/books/${ book.id }/delete"
+									method="post">
+									<!-- ### Converts method of form to DELETE ### -->
+									<input type="hidden" name="_method" value="delete">
+									<button class="btn btn-danger btn-sm round">Delete</button>
+								</form>
+							</div>
+						</c:when>
+					</c:choose>
 			</div>
 		</div>
 	</main>
